@@ -1,5 +1,5 @@
-import { HeroesComponent } from "./heroes.component";
-import { of } from "rxjs";
+import { HeroesComponent } from './heroes.component';
+import { of } from 'rxjs';
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
@@ -36,4 +36,4 @@ describe('HeroesComponent', () => {
       expect(mockHeroService.deleteHero).toHaveBeenCalledWith(HEROES[2]);
     });
   });
-})
+});
