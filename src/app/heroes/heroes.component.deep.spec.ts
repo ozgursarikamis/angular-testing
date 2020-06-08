@@ -39,10 +39,10 @@ describe('HeroesComponent (deep tests)', () => {
 
     // see if the child component HeroeComponent included:
     const heroComponentsDebugElements = fixture.debugElement.queryAll(By.directive(HeroComponent));
-    expect(heroComponentsDebugElements.length).toEqual(heroes.length);
-    expect(heroComponentsDebugElements[0].componentInstance.hero.name).toBe('SpiderDude');
-    expect(heroComponentsDebugElements[1].componentInstance.hero.name).toBe('Wonderful Woman');
-    expect(heroComponentsDebugElements[2].componentInstance.hero.name).toBe('SuperDude');
+    // expect(heroComponentsDebugElements.length).toEqual(heroes.length);
+    // expect(heroComponentsDebugElements[0].componentInstance.hero.name).toBe('SpiderDude');
+    // expect(heroComponentsDebugElements[1].componentInstance.hero.name).toBe('Wonderful Woman');
+    // expect(heroComponentsDebugElements[2].componentInstance.hero.name).toBe('SuperDude');
 
     // or:
     for (let i = 0; i < heroes.length; i++) {
