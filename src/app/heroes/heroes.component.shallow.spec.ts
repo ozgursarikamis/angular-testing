@@ -4,6 +4,7 @@ import { NO_ERRORS_SCHEMA, Input, Output, EventEmitter, Component } from '@angul
 import { HeroService } from '../hero.service';
 import { of } from 'rxjs/internal/observable/of';
 import { Hero } from '../hero';
+import { By } from '@angular/platform-browser';
 
 describe('HeroesComponent (shallow tests)', () => {
   let fixture: ComponentFixture<HeroesComponent>;
@@ -44,5 +45,12 @@ describe('HeroesComponent (shallow tests)', () => {
     fixture.detectChanges();
 
     expect(fixture.componentInstance.heroes.length).toBe(3);
+  });
+
+  it('should create one line for each hero', () => {
+    mockHeroService.getHeroes.and.returnValue(of(heroes));
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.queryAll(By.css('li')).length).toBe(3);
   });
 });
