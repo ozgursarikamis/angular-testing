@@ -7,6 +7,8 @@ describe('HeroService', () => {
 
   let mockMessageService: any;
   let httpTestingController: HttpTestingController;
+  let _service: HeroService;
+
   beforeEach(() => {
     mockMessageService = jasmine.createSpyObj(['add']);
     TestBed.configureTestingModule({
@@ -15,5 +17,18 @@ describe('HeroService', () => {
     });
 
     httpTestingController = TestBed.get(HttpTestingController);
+    _service = TestBed.get(HeroService);
+  });
+
+  describe('getHero', () => {
+    // it('should call get with the correct URL', () => {
+      // _service.getHero(1); // or inject method can be used:
+    // });
+    it('should call get with the correct URL', () => {
+      _service.getHero(4).subscribe();
+      const request = httpTestingController.expectOne('/api/heroes/4');
+      request.flush({ id: 4, name: 'SuperDude', strength: 100 });
+      httpTestingController.verify();
+    });
   });
 });
