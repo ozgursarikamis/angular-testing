@@ -58,7 +58,7 @@ describe('HeroesComponent (deep tests)', () => {
     fixture.detectChanges();
 
     const heroComponents = fixture.debugElement.queryAll(By.directive(HeroComponent));
-    (<HeroComponent>heroComponents[1].componentInstance).delete.emit(undefined);
+    (<HeroComponent>heroComponents[1].componentInstance).delete.emit();
     expect(fixture.componentInstance.delete).toHaveBeenCalledWith(heroes[1]);
   });
 });
