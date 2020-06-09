@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { Location } from '@angular/common';
 import { of } from 'rxjs/internal/observable/of';
+import { FormsModule } from '@angular/forms';
 
 describe('HeroDetailCompoent', () => {
   let fixture: ComponentFixture<HeroDetailComponent>;
@@ -20,6 +21,7 @@ describe('HeroDetailCompoent', () => {
 
     TestBed.configureTestingModule({
       declarations: [HeroDetailComponent],
+      imports: [ FormsModule ],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: HeroService, useValue: mockHeroService },
