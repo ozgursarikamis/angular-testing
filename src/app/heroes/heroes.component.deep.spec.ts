@@ -58,7 +58,8 @@ describe('HeroesComponent (deep tests)', () => {
     fixture.detectChanges();
 
     const heroComponents = fixture.debugElement.queryAll(By.directive(HeroComponent));
-    (<HeroComponent>heroComponents[1].componentInstance).delete.emit();
+    // (<HeroComponent>heroComponents[1].componentInstance).delete.emit();
+    heroComponents[1].triggerEventHandler('delete', null);
     expect(fixture.componentInstance.delete).toHaveBeenCalledWith(heroes[1]);
   });
 });
