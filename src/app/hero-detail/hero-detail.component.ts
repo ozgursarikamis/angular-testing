@@ -45,7 +45,7 @@ export class HeroDetailComponent implements OnInit {
 function debounce(func, wait, immediate) {
   let timeout;
   return function() {
-    var context = this, args = arguments;
+    const context = this, args = arguments;
     const later = function() {
       timeout = null;
       if (!immediate) { func.apply(context, args); }
