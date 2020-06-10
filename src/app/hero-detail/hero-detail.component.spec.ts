@@ -37,4 +37,19 @@ describe('HeroDetailCompoent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('h2').textContent).toContain('SuperDude'.toLocaleUpperCase());
   });
+
+  it('should call updateHero when save is called', (done) => {
+    mockHeroService.updateHero.and.returnValue(of({}));
+    fixture.detectChanges();
+
+    fixture.componentInstance.save();
+
+    // // fails because test is sync and code is async
+    // expect(mockHeroService.updateHero).toHaveBeenCalled();
+
+    setTimeout(() => {
+      expect(mockHeroService.updateHero).toHaveBeenCalled();
+      done();
+    }, 300);
+  });
 });
