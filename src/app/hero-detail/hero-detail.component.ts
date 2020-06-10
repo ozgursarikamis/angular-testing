@@ -33,20 +33,26 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
   save(): void {
-    debounce(() => { // makes the code async
+    let p = new Promise<void>((resolve) => {
       this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
-    }, 250, false)();
+        .subscribe(() => this.goBack());
+        resolve();
+    });
   }
+  // save(): void {
+  //   debounce(() => { // makes the code async
+  //     this.heroService.updateHero(this.hero)
+  //     .subscribe(() => this.goBack());
+  //   }, 250, false)();
+  // }
 }
 // help a function that doesn't get called too often
 function debounce(func, wait, immediate) {
   let timeout;
-  return function() {
+  return function () {
     const context = this, args = arguments;
-    const later = function() {
+    const later = function () {
       timeout = null;
       if (!immediate) { func.apply(context, args); }
     };
